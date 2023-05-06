@@ -14,7 +14,7 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-        Water Reader 安逸的划水摸鱼<br>
+        Water Reader Comfortable Paddling<br>
             <p>划水摸鱼的阅读插件</p>
             <dl>
                <dt>1.使用方式</dt>
