@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.zhjw"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
@@ -34,7 +34,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("221")
+        sinceBuild.set("211")
         untilBuild.set("231.*")
     }
 
