@@ -154,6 +154,20 @@ public class ChapterWindowUI {
                     buildWordAreaText(preChapter);
 
                     chapterList.setSelectedIndex(preIndex);
+
+                    //章节页面展示不够刷新页面
+                    if (chapterList.getFirstVisibleIndex() >= chapterList.getSelectedIndex()) {
+                        int startIndex = preIndex - 1;
+                        int endIndex = chapterList.getLastVisibleIndex() - 1;
+
+                        // 计算刷新区域的坐标和大小
+                        Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
+
+                        if (rect != null) {
+                            chapterList.scrollRectToVisible(rect);
+                        }
+
+                    }
                 }
             }
         });
@@ -175,6 +189,20 @@ public class ChapterWindowUI {
                     buildWordAreaText(nextChapter);
 
                     chapterList.setSelectedIndex(nextIndex);
+
+                    //章节页面展示不够刷新页面
+                    if (chapterList.getLastVisibleIndex() <= chapterList.getSelectedIndex()) {
+                        int startIndex = chapterList.getFirstVisibleIndex() + 1;
+                        int endIndex = nextIndex + 1;
+
+                        // 计算刷新区域的坐标和大小
+                        Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
+
+                        if (rect != null) {
+                            chapterList.scrollRectToVisible(rect);
+                        }
+
+                    }
                 }
 
 
