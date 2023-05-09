@@ -31,7 +31,7 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow id="water book" secondary="true" icon="AllIcons.Toolwindows.ToolWindowBookmarks" anchor="right"
+        <toolWindow id="Water Book" secondary="true" icon="AllIcons.Toolwindows.ToolWindowBookmarks" anchor="bottom"
                     factoryClass="com.zhjw.water_reader.factory.WaterBookContentFactory"/>
 
         <applicationService serviceImplementation="com.zhjw.water_reader.service.AppSettingsState"/>
