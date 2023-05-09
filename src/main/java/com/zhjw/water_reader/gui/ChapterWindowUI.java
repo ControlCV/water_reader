@@ -104,24 +104,27 @@ public class ChapterWindowUI {
      * 按钮绑定事件
      */
     private void buttonBindingClick() {
-        //隐藏按钮点击监听事件
-        hideButton.addActionListener(e -> {
-            Component leftComponent = splitPane.getLeftComponent();
 
-            if (leftComponent.getWidth() == 0) {
-                // 当左边组件被收起时，展开左边内容
-                splitPane.setDividerLocation(splitPaneDimension.width);
-                leftComponent.setSize(splitPaneDimension);
+        if (hideButton.getActionListeners().length == 0) {
+            //隐藏按钮点击监听事件
+            hideButton.addActionListener(e -> {
+                Component leftComponent = splitPane.getLeftComponent();
 
-                //将当前选中标题设置为第一行显示
-                chapterScrollPane.getViewport().setViewPosition(chapterList.indexToLocation(chapterList.getSelectedIndex()));
-            } else {
-                // 当左边组件已经展开时，收起左边内容
-                splitPaneDimension = leftComponent.getSize();
-                leftComponent.setSize(new Dimension(0, splitPaneDimension.height));
-                splitPane.setDividerLocation(0);
-            }
-        });
+                if (leftComponent.getWidth() == 0) {
+                    // 当左边组件被收起时，展开左边内容
+                    splitPane.setDividerLocation(splitPaneDimension.width);
+                    leftComponent.setSize(splitPaneDimension);
+
+                    //将当前选中标题设置为第一行显示
+                    chapterScrollPane.getViewport().setViewPosition(chapterList.indexToLocation(chapterList.getSelectedIndex()));
+                } else {
+                    // 当左边组件已经展开时，收起左边内容
+                    splitPaneDimension = leftComponent.getSize();
+                    leftComponent.setSize(new Dimension(0, splitPaneDimension.height));
+                    splitPane.setDividerLocation(0);
+                }
+            });
+        }
 
 
         //章节列表点击监听事件
@@ -137,77 +140,81 @@ public class ChapterWindowUI {
         });
 
 
-        //上一章点击监听事件
-        preButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int currentIndex = chapterList.getSelectedIndex();
+        if (preButton.getActionListeners().length == 0) {
+            //上一章点击监听事件
+            preButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int currentIndex = chapterList.getSelectedIndex();
 
-                if (currentIndex == 0) {
-                    //第一章不做任何处理
+                    if (currentIndex == 0) {
+                        //第一章不做任何处理
 
-                } else {
-                    int preIndex = chapterList.getSelectedIndex() - 1;
-                    instance.chapterIndex = preIndex;
+                    } else {
+                        int preIndex = chapterList.getSelectedIndex() - 1;
+                        instance.chapterIndex = preIndex;
 
-                    Chapter preChapter = (Chapter) chapterList.getModel().getElementAt(preIndex);
-                    buildWordAreaText(preChapter);
+                        Chapter preChapter = (Chapter) chapterList.getModel().getElementAt(preIndex);
+                        buildWordAreaText(preChapter);
 
-                    chapterList.setSelectedIndex(preIndex);
+                        chapterList.setSelectedIndex(preIndex);
 
-                    //章节页面展示不够刷新页面
-                    if (chapterList.getFirstVisibleIndex() >= chapterList.getSelectedIndex()) {
-                        int startIndex = preIndex - 1;
-                        int endIndex = chapterList.getLastVisibleIndex() - 1;
+                        //章节页面展示不够刷新页面
+                        if (chapterList.getFirstVisibleIndex() >= chapterList.getSelectedIndex()) {
+                            int startIndex = preIndex - 1;
+                            int endIndex = chapterList.getLastVisibleIndex() - 1;
 
-                        // 计算刷新区域的坐标和大小
-                        Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
+                            // 计算刷新区域的坐标和大小
+                            Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
 
-                        if (rect != null) {
-                            chapterList.scrollRectToVisible(rect);
+                            if (rect != null) {
+                                chapterList.scrollRectToVisible(rect);
+                            }
+
                         }
-
                     }
                 }
-            }
-        });
+            });
+        }
 
+        if (nextButton.getActionListeners().length == 0) {
+            //下一章点击监听事件
+            nextButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    int currentIndex = chapterList.getSelectedIndex();
 
-        //下一章点击监听事件
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int currentIndex = chapterList.getSelectedIndex();
+                    if (currentIndex == chapterList.getModel().getSize() - 1) {
+                        //最后一章不做处理
+                    } else {
+                        int nextIndex = chapterList.getSelectedIndex() + 1;
+                        instance.chapterIndex = nextIndex;
 
-                if (currentIndex == chapterList.getModel().getSize() - 1) {
-                    //最后一章不做处理
-                } else {
-                    int nextIndex = chapterList.getSelectedIndex() + 1;
-                    instance.chapterIndex = nextIndex;
+                        Chapter nextChapter = (Chapter) chapterList.getModel().getElementAt(nextIndex);
+                        buildWordAreaText(nextChapter);
 
-                    Chapter nextChapter = (Chapter) chapterList.getModel().getElementAt(nextIndex);
-                    buildWordAreaText(nextChapter);
+                        chapterList.setSelectedIndex(nextIndex);
 
-                    chapterList.setSelectedIndex(nextIndex);
+                        //章节页面展示不够刷新页面
+                        if (chapterList.getLastVisibleIndex() <= chapterList.getSelectedIndex()) {
+                            int startIndex = chapterList.getFirstVisibleIndex() + 1;
+                            int endIndex = nextIndex + 1;
 
-                    //章节页面展示不够刷新页面
-                    if (chapterList.getLastVisibleIndex() <= chapterList.getSelectedIndex()) {
-                        int startIndex = chapterList.getFirstVisibleIndex() + 1;
-                        int endIndex = nextIndex + 1;
+                            // 计算刷新区域的坐标和大小
+                            Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
 
-                        // 计算刷新区域的坐标和大小
-                        Rectangle rect = chapterList.getCellBounds(startIndex, endIndex);
+                            if (rect != null) {
+                                chapterList.scrollRectToVisible(rect);
+                            }
 
-                        if (rect != null) {
-                            chapterList.scrollRectToVisible(rect);
                         }
-
                     }
+
+
                 }
+            });
+        }
 
-
-            }
-        });
     }
 
     /**
