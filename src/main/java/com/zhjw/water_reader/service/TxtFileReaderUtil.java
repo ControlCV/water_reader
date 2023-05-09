@@ -14,6 +14,7 @@ import java.util.List;
 @Data
 public class TxtFileReaderUtil {
 
+    private final static String MATCH_RULER_STR = "^第[\\u4e00-\\u9fa50-9]{1,10}章.*";
 
     /**
      * 获取所有章节名
@@ -29,7 +30,7 @@ public class TxtFileReaderUtil {
             int currentLine = 0;
             while ((line = br.readLine()) != null) {
                 // 当前行为目标行，可以对其进行处理
-                if (line.trim().startsWith("===第") || line.startsWith("第")) {
+                if (line.trim().matches(MATCH_RULER_STR)) {
                     Chapter chapter = new Chapter(line.trim(), currentLine, 0);
                     result.add(chapter);
 
