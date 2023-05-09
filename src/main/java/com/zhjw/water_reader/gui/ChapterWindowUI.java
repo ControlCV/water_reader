@@ -112,6 +112,9 @@ public class ChapterWindowUI {
                 // 当左边组件被收起时，展开左边内容
                 chapterList.setSize(splitPaneDimension);
                 splitPane.setDividerLocation(splitPaneDimension.width);
+
+                //将当前选中标题设置为第一行显示
+                chapterScrollPane.getViewport().setViewPosition(chapterList.indexToLocation(chapterList.getSelectedIndex()));
             } else {
                 // 当左边组件已经展开时，收起左边内容
                 splitPaneDimension = leftComponent.getSize();
