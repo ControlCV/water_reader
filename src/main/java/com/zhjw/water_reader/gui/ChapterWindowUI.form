@@ -38,7 +38,9 @@
                   <component id="481df" class="javax.swing.JTextArea" binding="wordTextArea">
                     <constraints/>
                     <properties>
-                      <foreground color="-1031551"/>
+                      <background color="-13948117"/>
+                      <font size="16"/>
+                      <foreground color="-1578007"/>
                       <lineWrap value="true"/>
                       <rows value="10"/>
                       <text value=""/>
