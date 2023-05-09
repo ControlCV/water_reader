@@ -18,8 +18,7 @@
             <p>划水摸鱼的阅读插件</p>
             <dl>
                <dt>1.使用方式</dt>
-               <dd>在侧边框右下角找到Water Book点开确保组件初始化完成</dd><p></p>
-               <dd>在置顶菜单栏Help选项 -> WaterBookFileSetting 选择初始化书籍路径即可加载</dd><p></p>
+               <dd>置顶菜单栏Help选项 -> WaterBookFileSetting 选择初始化书籍路径 在侧边框右下角即可看到</dd><p></p>
                <dt>2.关闭视图快捷键</dt>
                <dd>Shift + ESC</dd>
             </dl>
