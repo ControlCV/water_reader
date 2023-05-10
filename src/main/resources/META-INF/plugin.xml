@@ -14,14 +14,25 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-        Water Reader comfortable paddling to read book<br>
-            <p>划水摸鱼的阅读插件</p>
-            <dl>
-               <dt>1.使用方式</dt>
-               <dd>置顶菜单栏Help选项 -> WaterBookFileSetting 选择初始化书籍路径 在侧边框右下角即可看到</dd><p></p>
-               <dt>2.关闭视图快捷键</dt>
-               <dd>Shift + ESC</dd>
-            </dl>
+            In your spare time, you can get a good novel reading experience in IDE by using Water Book, which supports converting txt files into a reader with chapter sorting;
+         and intelligently records the currently read chapter to locate the previous chapter information when you open IDE next time.
+
+        <dl>
+            <dt>1.How to use?</dt>
+            <dd>find top menu bar "Help" -> WaterBookFileSetting choose txt path to initial.Once the text has been initialized, it can be seen in the bottom right corner of the sidebar.</dd>
+            <dt>2.Hide plugin shortcuts</dt>
+            <dd>Shift + ESC</dd>
+        </dl>
+
+         <dl>
+            在闲暇的时间，你可以通过使用Water Book在IDE中获得良好的小说阅读体验。Water Book支持将txt文件转化为带有章节排序的阅读器；并且智能记录当前阅读的章节，在下一次打开IDE时，定位到之前的章节信息。
+        </dl>
+        <dl>
+           <dt>1.使用方式</dt>
+           <dd>置顶菜单栏选项 "Help" -> WaterBookFileSetting 选择初始化书籍路径.初始化完成后在侧边框右下角即可看到</dd><p></p>
+           <dt>2.隐藏插件快捷键</dt>
+           <dd>Shift + ESC</dd>
+        </dl>
         ]]></description>
 
     <!-- Product and plugin compatibility requirements.
