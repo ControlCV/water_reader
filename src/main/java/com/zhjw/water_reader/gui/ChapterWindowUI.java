@@ -229,6 +229,9 @@ public class ChapterWindowUI {
         for (String line : selectedContent) {
             stringBuilder.append(line + "\n");
         }
+
+        Font font = new Font("", 0, instance.fontSize);
+        wordTextArea.setFont(font);
         wordTextArea.setText(stringBuilder.toString());
         //滑动栏回到头部
         wordTextArea.setCaretPosition(0);

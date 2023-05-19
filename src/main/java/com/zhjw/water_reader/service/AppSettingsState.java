@@ -30,6 +30,16 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
     public int chapterIndex = 0;
 
     /**
+     * 章节名规则
+     */
+    public String chapterRuler;
+
+    /**
+     * 字体大小
+     */
+    public int fontSize = 15;
+
+    /**
      * 章节列表
      */
     public List<Chapter> chapterList;

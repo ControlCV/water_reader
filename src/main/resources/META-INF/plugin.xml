@@ -50,7 +50,7 @@
 
     <actions>
         <action id="com.zhjw.water_reader.FileSetting" class="com.zhjw.water_reader.action.FileSetting"
-                text="WaterBookFileSetting" icon="AllIcons.Nodes.BookmarkGroup">
+                text="WaterBookFileSetting" icon="AllIcons.General.Settings">
             <add-to-group group-id="HelpMenu" anchor="first"/>
         </action>
     </actions>

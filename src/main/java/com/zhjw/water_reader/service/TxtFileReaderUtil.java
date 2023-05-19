@@ -16,6 +16,9 @@ public class TxtFileReaderUtil {
 
     private final static String MATCH_RULER_STR = "^第[\\u4e00-\\u9fa50-9]{1,10}章.*";
 
+
+    private static AppSettingsState instance = AppSettingsState.getInstance();
+
     /**
      * 获取所有章节名
      *
@@ -24,13 +27,19 @@ public class TxtFileReaderUtil {
     public static List<Chapter> allChapterTitle(String filePath) {
         List<Chapter> result = new ArrayList<>();
 
+        String ruler;
+        if(instance.chapterRuler != null && !"".equals(instance.chapterRuler)){
+            ruler = instance.chapterRuler;
+        }else{
+            ruler = MATCH_RULER_STR;
+        }
 
         try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8))) {
             String line;
             int currentLine = 0;
             while ((line = br.readLine()) != null) {
                 // 当前行为目标行，可以对其进行处理
-                if (line.trim().matches(MATCH_RULER_STR)) {
+                if (line.trim().matches(ruler)) {
                     Chapter chapter = new Chapter(line.trim(), currentLine, 0);
                     result.add(chapter);
 
@@ -46,7 +55,7 @@ public class TxtFileReaderUtil {
 
             if (result.size() != 0) {
                 result.get(result.size() - 1).setEndLine(currentLine);
-            } else if (result.size() == 0) {
+            } else {
                 result.add(new Chapter("",0,currentLine));
             }
 
