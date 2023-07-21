@@ -35,6 +35,13 @@
         </dl>
         ]]></description>
 
+    <change-notes><![CDATA[
+    <h2>1.1.1</h2>
+    <ul>
+      <li>[FIX]limit txt file length</li>
+    </ul>
+    ]]></change-notes>
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>

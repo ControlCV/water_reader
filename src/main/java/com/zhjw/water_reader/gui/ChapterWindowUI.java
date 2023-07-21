@@ -66,6 +66,11 @@ public class ChapterWindowUI {
             return contentPanel;
         }
 
+        if (file.length() >= 2048000) {
+            wordTextArea.setText("书籍" + instance.filePath + "大小超出2MB,请截取文件重新加载");
+            return contentPanel;
+        }
+
         //判断当前选中章节是否为0
         if (instance.chapterIndex == 0) {
             //代表需要重新读取txt文件
