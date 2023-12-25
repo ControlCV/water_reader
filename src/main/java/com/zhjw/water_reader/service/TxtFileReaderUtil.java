@@ -66,6 +66,33 @@ public class TxtFileReaderUtil {
         return result;
     }
 
+
+    /**
+     * 获取文本指定起始行所有内容
+     *
+     * @return 文本所有内容
+     */
+    public static List<String> designateLineContent(String filePath, int startLine, int endLine) {
+        List<String> result = new ArrayList<>();
+
+        int lineNo = 0;
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                // 当前行为目标行，可以对其进行处理
+                if (lineNo >= startLine && lineNo <= endLine) {
+                    result.add(line);
+                }
+                lineNo++;
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     /**
      * 获取文本所有内容
      *

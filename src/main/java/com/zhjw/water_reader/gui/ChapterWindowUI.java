@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.List;
 
+import static com.zhjw.water_reader.service.TxtFileReaderUtil.designateLineContent;
+
 
 public class ChapterWindowUI {
 
@@ -66,10 +68,6 @@ public class ChapterWindowUI {
             return contentPanel;
         }
 
-        if (file.length() >= 2048000) {
-            wordTextArea.setText("书籍" + instance.filePath + "大小超出2MB,请截取文件重新加载");
-            return contentPanel;
-        }
 
         //判断当前选中章节是否为0
         if (instance.chapterIndex == 0) {
@@ -78,11 +76,7 @@ public class ChapterWindowUI {
             //获取所有标题
             List<Chapter> allChapterTitle = TxtFileReaderUtil.allChapterTitle(instance.filePath);
 
-            //获取所有内容
-            List<String> allLineContent = TxtFileReaderUtil.allLineContent(instance.filePath);
-
             instance.chapterList = allChapterTitle;
-            instance.allContentStrList = allLineContent;
         }
 
         //初始化标题内容
@@ -228,7 +222,7 @@ public class ChapterWindowUI {
      * @param selectedChapter 选中的章节
      */
     private void buildWordAreaText(Chapter selectedChapter) {
-        List<String> selectedContent = instance.allContentStrList.subList(selectedChapter.getStartLine(), selectedChapter.getEndLine());
+        List<String> selectedContent = designateLineContent(instance.filePath,selectedChapter.getStartLine(), selectedChapter.getEndLine() - 1);
 
         StringBuilder stringBuilder = new StringBuilder();
         for (String line : selectedContent) {
