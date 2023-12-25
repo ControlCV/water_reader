@@ -8,6 +8,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -35,19 +36,14 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
     public String chapterRuler;
 
     /**
-     * 字体大小
+     * 文本域字体样式
      */
-    public int fontSize = 15;
+    public Font font = new Font("宋体", 0, 15);
 
     /**
      * 章节列表
      */
     public List<Chapter> chapterList;
-
-    /**
-     * 所有的内容
-     */
-    public List<String>  allContentStrList;
 
     public static AppSettingsState getInstance() {
         return ApplicationManager.getApplication().getService(AppSettingsState.class);

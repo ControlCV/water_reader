@@ -229,7 +229,7 @@ public class ChapterWindowUI {
             stringBuilder.append(line + "\n");
         }
 
-        Font font = new Font("", 0, instance.fontSize);
+        Font font = instance.font;
         wordTextArea.setFont(font);
         wordTextArea.setText(stringBuilder.toString());
         //滑动栏回到头部

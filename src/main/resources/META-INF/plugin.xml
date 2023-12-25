@@ -36,6 +36,11 @@
         ]]></description>
 
     <change-notes><![CDATA[
+    <h2>1.1.2</h2>
+    <ul>
+      <li>[FIX]load the selected Chinese book into memory instead of loading all the text content</li>
+      <li>[FEAT]added font style selection function</li>
+    </ul>
     <h2>1.1.1</h2>
     <ul>
       <li>[FIX]limit txt file length</li>

@@ -22,6 +22,8 @@ public class DialogSetting extends JDialog {
     private JButton OKButton;
     private JLabel chapterRulerLabel;
     private JLabel fontSizeLabel;
+    private JLabel fontNameLabel;
+    private JComboBox fontNameBox;
 
     AppSettingsState instance = AppSettingsState.getInstance();
 
@@ -37,12 +39,20 @@ public class DialogSetting extends JDialog {
             chapterRuler.setText(instance.chapterRuler);
         }
 
-       int fontSize = instance.fontSize;
+        Font font = instance.font;
 
-        SpinnerModel spinnerModel = new SpinnerNumberModel(instance.fontSize, 10, 40, 1);
+        SpinnerModel spinnerModel = new SpinnerNumberModel(instance.font.getSize(), 10, 40, 1);
         fontSizeSpinner.setModel(spinnerModel);
-        Font font = new Font("", 0, fontSize);
         showFontSizeTextPane.setFont(font);
+
+        String[] fontNames = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
+        fontNameBox.setModel(new DefaultComboBoxModel<>(fontNames));
+        for (int i = 0; i < fontNames.length; i++) {
+            String fontName = fontNames[i];
+            if (fontName.equals(font.getFontName())){
+                fontNameBox.setSelectedIndex(i);
+            }
+        }
 
         buttonBindingClick();
     }
@@ -74,7 +84,7 @@ public class DialogSetting extends JDialog {
                     public void stateChanged(ChangeEvent e) {
                         int value = (int) fontSizeSpinner.getValue();
                         if (10 < value && value < 40) {
-                            Font font = new Font("", 0, value);
+                            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , value);
                             showFontSizeTextPane.setFont(font);
                         }
                     }
@@ -95,14 +105,18 @@ public class DialogSetting extends JDialog {
                 closeDialog(e);
             }
         });
+
+        fontNameBox.addActionListener((event)->{
+            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
+            showFontSizeTextPane.setFont(font);
+        });
     }
 
 
     public void saveSetting(){
         instance.filePath = filePathField.getText();
         instance.chapterRuler = chapterRuler.getText();
-        instance.fontSize = (int)fontSizeSpinner.getValue();
-
+        instance.font = new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
     }
 
     public void closeDialog(MouseEvent e){
