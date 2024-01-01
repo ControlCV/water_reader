@@ -25,7 +25,7 @@ public class WaterBookContentFactory implements ToolWindowFactory {
     @Override
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         initChapterWindowUI();
-        Content content = ContentFactory.SERVICE.getInstance().createContent(chapterWindowUI.getPanel(), "", false);
+        Content content = ContentFactory.getInstance().createContent(chapterWindowUI.getPanel(), "", false);
         toolWindow.getContentManager().addContent(content);
 
     }
