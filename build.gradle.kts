@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.zhjw"
-version = "1.1.2"
+version = "1.1.3.util.v2023"
 
 repositories {
     mavenCentral()
