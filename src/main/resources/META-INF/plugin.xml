@@ -36,6 +36,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+    <h2>1.1.3</h2>
+    <ul>
+      <li>[FEAT]added font color selection function</li>
+    </ul>
     <h2>1.1.2</h2>
     <ul>
       <li>[FIX]load the selected Chinese book into memory instead of loading all the text content</li>
