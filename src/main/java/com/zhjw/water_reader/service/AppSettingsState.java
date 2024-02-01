@@ -41,6 +41,11 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
     public Font font = new Font("宋体", 0, 15);
 
     /**
+     * 文本域字体样式
+     */
+    public List<Integer> fontRgb = List.of(255,0,0);
+
+    /**
      * 章节列表
      */
     public List<Chapter> chapterList;

@@ -3,12 +3,12 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="655" height="307"/>
+      <xy x="48" y="54" width="710" height="357"/>
     </constraints>
     <properties/>
     <border type="none"/>
     <children>
-      <grid id="e3588" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="e3588" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -36,19 +36,13 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="ba1c8" class="javax.swing.JLabel">
+          <component id="ba1c8" class="javax.swing.JLabel" binding="fontLabel">
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="字体大小"/>
+              <text value="字体设置"/>
             </properties>
-          </component>
-          <component id="b82a1" class="javax.swing.JSpinner" binding="fontSizeSpinner">
-            <constraints>
-              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties/>
           </component>
           <component id="e11ba" class="javax.swing.JButton" binding="chooseFileButton">
             <constraints>
@@ -58,37 +52,12 @@
               <text value="选择文件位置"/>
             </properties>
           </component>
-          <component id="682bd" class="javax.swing.JLabel" binding="chapterRulerLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <text value="章节名规则"/>
-            </properties>
-          </component>
-          <component id="1ddbe" class="javax.swing.JLabel">
+          <component id="46cf6" class="javax.swing.JLabel" binding="fontSizeDescLabel">
             <constraints>
               <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <font size="12" style="3"/>
-              <text value="章节名获取支持正则表达式:默认^第[\\u4e00-\\u9fa50-9]{1,10}章.*"/>
-            </properties>
-          </component>
-          <component id="9bfb4" class="javax.swing.JTextField" binding="chapterRuler">
-            <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties/>
-          </component>
-          <component id="46cf6" class="javax.swing.JLabel" binding="fontSizeLabel">
-            <constraints>
-              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font size="12" style="3"/>
+              <font size="8" style="3"/>
               <text value="字体大小默认15pt,调整范围10pt-40pt"/>
             </properties>
           </component>
@@ -97,27 +66,70 @@
               <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="字体样式"/>
+              <text value="字体效果"/>
             </properties>
           </component>
-          <component id="628c6" class="javax.swing.JComboBox" binding="fontNameBox">
+          <component id="9bfb4" class="javax.swing.JTextField" binding="chapterRuler">
             <constraints>
-              <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
             </constraints>
             <properties/>
           </component>
+          <component id="682bd" class="javax.swing.JLabel" binding="chapterRulerLabel">
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="章节名规则 "/>
+            </properties>
+          </component>
+          <component id="6a81f" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="8" style="3"/>
+              <text value="支持正则表达式"/>
+            </properties>
+          </component>
+          <component id="b82a1" class="javax.swing.JSpinner" binding="fontSizeSpinner">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties/>
+          </component>
+          <component id="628c6" class="javax.swing.JComboBox" binding="fontNameBox">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <model/>
+            </properties>
+          </component>
+          <component id="1ddbe" class="javax.swing.JLabel" binding="chapterRulerDescLabel">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <font size="8" style="3"/>
+              <text value="默认^第[\\u4e00-\\u9fa50-9]{1,10}章.*"/>
+            </properties>
+          </component>
+          <component id="1fc9f" class="javax.swing.JTextField" binding="fontColorNameTextField">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <editable value="false"/>
+              <enabled value="false"/>
+            </properties>
+          </component>
         </children>
       </grid>
-      <component id="c4526" class="javax.swing.JTextPane" binding="showFontSizeTextPane">
-        <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="150" height="50"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="I like reading！"/>
-        </properties>
-      </component>
       <grid id="3d190" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
@@ -144,6 +156,16 @@
           </component>
         </children>
       </grid>
+      <component id="c4526" class="javax.swing.JTextPane" binding="showFontSizeTextPane">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="I like reading！"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

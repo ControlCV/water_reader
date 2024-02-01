@@ -9,6 +9,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class DialogSetting extends JDialog {
     private JPanel contentPane;
@@ -21,9 +22,12 @@ public class DialogSetting extends JDialog {
     private JButton calButton;
     private JButton OKButton;
     private JLabel chapterRulerLabel;
-    private JLabel fontSizeLabel;
+    private JLabel fontSizeDescLabel;
     private JLabel fontNameLabel;
     private JComboBox fontNameBox;
+    private JLabel fontLabel;
+    private JLabel chapterRulerDescLabel;
+    private JTextField fontColorNameTextField;
 
     AppSettingsState instance = AppSettingsState.getInstance();
 
@@ -44,6 +48,10 @@ public class DialogSetting extends JDialog {
         SpinnerModel spinnerModel = new SpinnerNumberModel(instance.font.getSize(), 10, 40, 1);
         fontSizeSpinner.setModel(spinnerModel);
         showFontSizeTextPane.setFont(font);
+        showFontSizeTextPane.setForeground(new Color(instance.fontRgb.get(0),instance.fontRgb.get(1),instance.fontRgb.get(2)));
+
+        String showRgbText = new StringBuilder().append(instance.fontRgb.get(0)).append(",").append(instance.fontRgb.get(1)).append(",").append(instance.fontRgb.get(2)).toString();
+        fontColorNameTextField.setText(showRgbText);
 
         String[] fontNames = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
         fontNameBox.setModel(new DefaultComboBoxModel<>(fontNames));
@@ -110,6 +118,21 @@ public class DialogSetting extends JDialog {
             Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
             showFontSizeTextPane.setFont(font);
         });
+
+        fontColorNameTextField.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Color result = JColorChooser.showDialog(new JFrame(), "颜色选择器", Color.WHITE);
+                if(result == null){
+                    result = new Color(255,0,0);
+                }
+
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append(result.getRed()).append(",").append(result.getGreen()).append(",").append(result.getBlue());
+                fontColorNameTextField.setText(stringBuilder.toString());
+                showFontSizeTextPane.setForeground(result);
+            }
+        });
     }
 
 
@@ -117,6 +140,12 @@ public class DialogSetting extends JDialog {
         instance.filePath = filePathField.getText();
         instance.chapterRuler = chapterRuler.getText();
         instance.font = new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
+
+        ArrayList<Integer> rgbList = new ArrayList<>();
+        for (String s : fontColorNameTextField.getText().split(",")) {
+            rgbList.add(Integer.parseInt(s));
+        }
+        instance.fontRgb = rgbList;
     }
 
     public void closeDialog(MouseEvent e){
