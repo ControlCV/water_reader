@@ -232,6 +232,8 @@ public class ChapterWindowUI {
         Font font = instance.font;
         wordTextArea.setFont(font);
         wordTextArea.setText(stringBuilder.toString());
+        Color fontColor = new Color(instance.fontRgb.get(0), instance.fontRgb.get(1), instance.fontRgb.get(2));
+        wordTextArea.setForeground(fontColor);
         //滑动栏回到头部
         wordTextArea.setCaretPosition(0);
     }
