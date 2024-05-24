@@ -36,6 +36,10 @@
         ]]></description>
 
     <change-notes><![CDATA[
+      <h2>1.1.3</h2>
+    <ul>
+      <li>[FEAT]update support JetBrains IDEs version</li>
+    </ul>
     <h2>1.1.3</h2>
     <ul>
       <li>[FEAT]added font color selection function</li>
