@@ -43,9 +43,9 @@ public class DialogSetting extends JDialog {
             chapterRuler.setText(instance.chapterRuler);
         }
 
-        Font font = instance.font;
+        Font font = new Font(instance.fontName, instance.fontStyle, instance.fontSize);
 
-        SpinnerModel spinnerModel = new SpinnerNumberModel(instance.font.getSize(), 10, 40, 1);
+        SpinnerModel spinnerModel = new SpinnerNumberModel(instance.fontSize, 10, 40, 1);
         fontSizeSpinner.setModel(spinnerModel);
         showFontSizeTextPane.setFont(font);
         showFontSizeTextPane.setForeground(new Color(instance.fontRgb.get(0),instance.fontRgb.get(1),instance.fontRgb.get(2)));
@@ -92,7 +92,7 @@ public class DialogSetting extends JDialog {
                     public void stateChanged(ChangeEvent e) {
                         int value = (int) fontSizeSpinner.getValue();
                         if (10 < value && value < 40) {
-                            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , value);
+                            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.fontStyle , value);
                             showFontSizeTextPane.setFont(font);
                         }
                     }
@@ -115,7 +115,7 @@ public class DialogSetting extends JDialog {
         });
 
         fontNameBox.addActionListener((event)->{
-            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
+            Font font =  new Font( fontNameBox.getSelectedItem().toString(), instance.fontStyle , (int) fontSizeSpinner.getValue());
             showFontSizeTextPane.setFont(font);
         });
 
@@ -139,7 +139,8 @@ public class DialogSetting extends JDialog {
     public void saveSetting(){
         instance.filePath = filePathField.getText();
         instance.chapterRuler = chapterRuler.getText();
-        instance.font = new Font( fontNameBox.getSelectedItem().toString(), instance.font.getStyle() , (int) fontSizeSpinner.getValue());
+        instance.fontName = fontNameBox.getSelectedItem().toString();
+        instance.fontSize =  (int) fontSizeSpinner.getValue();
 
         ArrayList<Integer> rgbList = new ArrayList<>();
         for (String s : fontColorNameTextField.getText().split(",")) {

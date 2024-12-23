@@ -8,7 +8,6 @@ import com.intellij.util.xmlb.XmlSerializerUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -38,12 +37,27 @@ public class AppSettingsState implements PersistentStateComponent<AppSettingsSta
     /**
      * 文本域字体样式
      */
-    public Font font = new Font("宋体", 0, 15);
+//    public Font font = new Font("宋体", 0, 15);
+
+    /**
+     * 文本域字体名称
+     */
+    public String fontName = "宋体";
 
     /**
      * 文本域字体样式
      */
-    public List<Integer> fontRgb = List.of(255,0,0);
+    public int fontStyle = 0;
+
+    /**
+     * 文本域字体大小
+     */
+    public int fontSize = 15;
+
+    /**
+     * 文本域字体样式
+     */
+    public List<Integer> fontRgb = List.of(255, 0, 0);
 
     /**
      * 章节列表

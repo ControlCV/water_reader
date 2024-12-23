@@ -229,7 +229,7 @@ public class ChapterWindowUI {
             stringBuilder.append(line + "\n");
         }
 
-        Font font = instance.font;
+        Font font = new Font(instance.fontName, instance.fontStyle, instance.fontSize);
         wordTextArea.setFont(font);
         wordTextArea.setText(stringBuilder.toString());
         Color fontColor = new Color(instance.fontRgb.get(0), instance.fontRgb.get(1), instance.fontRgb.get(2));

@@ -8,6 +8,7 @@ import com.zhjw.water_reader.gui.DialogSetting;
 import com.zhjw.water_reader.service.AppSettingsState;
 
 import javax.swing.*;
+import java.awt.*;
 
 
 public class FileSetting extends AnAction {
@@ -20,14 +21,14 @@ public class FileSetting extends AnAction {
 
         DialogSetting dialogSetting = new DialogSetting();
 
-        JOptionPane.showOptionDialog(null, dialogSetting.getContentPane(), "Water Book Setting",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, new Object[]{}, null);
+        //确保在EDT中执行UI更新
+        SwingUtilities.invokeLater(()->{
+            dialogSetting.setMinimumSize(new Dimension(700, 400));
+            dialogSetting.setLocationRelativeTo(null);
+            dialogSetting.setVisible(true);
 
-
-        instance.chapterIndex = 0;
-        WaterBookContentFactory.initChapterWindowUI().getPanel();
-
-
+            instance.chapterIndex = 0;
+            WaterBookContentFactory.initChapterWindowUI().getPanel();
+        });
     }
 }
